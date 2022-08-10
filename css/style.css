@@ -1,0 +1,326 @@
+@import url('https://fonts.googleapis.com/css2?family=Hind:wght@300&family=Roboto:wght@100&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Hind', sans-serif;
+    font-family: 'Roboto', sans-serif;
+}
+
+body,
+.app-content {
+    background-color: #EBECF0;
+}
+
+button,
+input,
+select,
+textarea,
+[role="button"],
+[type="button"] {
+    border: 0;
+    outline: 0;
+    background: none;
+}
+
+button,
+select,
+[role="button"],
+[type="button"] {
+    cursor: pointer;
+}
+
+header,
+footer,
+aside,
+aside.aside .aside-content {
+    background-color: #fff;
+}
+
+aside,
+aside.aside .aside-content {
+    background-color: #18191B
+}
+
+body>div:first-of-type {
+    display: flex;
+    height: 100vh;
+}
+
+
+/* styles for aside and childern*/
+
+aside.aside {
+    flex-grow: .1;
+}
+
+aside.aside .aside-content {
+    border-right: 2px solid #dfdfdf;
+    min-height: 100%;
+    max-height: 100%;
+}
+
+aside.aside .aside-content {
+    display: flex;
+    width: 100%;
+}
+
+aside.aside .aside-content .links-tag-names>div {
+    /* padding: 12px 0px; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+aside.aside .aside-content .links-tag-names>div button {
+    padding: 12px 20px;
+    border-radius: 6px;
+    position: relative;
+    width: 100%;
+}
+
+aside.aside .aside-content .links-tag-names>div button.active,
+aside.aside .aside-content .links-tag-names>div button:hover {
+    background-color: #252627;
+    transition: background-color .2s ease-in-out;
+}
+aside.aside .aside-content .links-tag-names>div button.active,
+aside.aside .aside-content .links-tag-names>div button.active:hover {
+    border-radius: 0;
+}
+
+aside.aside .aside-content .links-tag-names>div button:hover {
+    border-radius: 8px;
+}
+
+aside.aside .aside-content .links-tag-names>div button.active::after {
+    display: none;
+}
+
+aside.aside .aside-content .links-tag-names>div button::after {
+    content: attr(data-name-tag);
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    transform: translate(50%, -50%) !important;
+    color: #fff;
+    padding: 10px;
+    border-radius: 6px;
+    background-color: rgb(88, 151, 245);
+    opacity: 0;
+    width: max-content;
+    font-weight: 700;
+    transition: transform .1s ease-in;
+    border: 2px solid rgb(50, 117, 255);
+    z-index: -2;
+}
+
+aside.aside .aside-content>div:first-of-type button:hover::after {
+    transform: translate(5%, -50%) !important;
+    opacity: 1;
+    z-index: 12;
+}
+
+aside.aside .aside-content>div:first-of-type {
+    flex-grow: .9;
+}
+
+aside.aside .aside-content>div:last-of-type {
+    flex-grow: 2;
+}
+
+aside.aside svg {
+    width: 26px;
+    height: 26px;
+}
+
+aside.aside svg path {
+    fill: rgb(255, 255, 255);
+}
+
+aside.aside .show-content-tag-name {
+    position: relative;
+    width: 0px;
+    left: -300px;
+    z-index: -2;
+    transition: .1s ease-out;
+    transform: translateX(-100%);
+}
+
+aside.aside .show-content-tag-name.active {
+    width: 300px;
+    left: 0px;
+    transform: translateX(0%);
+    z-index: 1;
+}
+
+aside.aside .show-content-tag-name * {
+    color: #fff;
+}
+
+aside.aside .show-content-tag-name .content {
+    height: 100%;
+    background-color: #252627;
+    flex-direction: column;
+    display: flex;
+}
+
+aside.aside .show-content-tag-name .haeder-content-show-tag-name {
+    border-bottom: 1px solid #333435;
+    padding: 10px;
+
+}
+
+aside.aside .show-content-tag-name .haeder-content-show-tag-name>* {
+    padding: 10px;
+
+}
+
+aside.aside .show-content-tag-name .haeder-content-show-tag-name .search-content input {
+    padding: 12px 15px;
+    background-color: #fff;
+    border-radius: 8px;
+    border: 1px solid #18191B !important;
+    width: 100%;
+    color: #18191B !important;
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+
+aside.aside .show-content-tag-name .body-content-show-tag-name {
+    overflow: auto;
+    flex-grow: 2;
+    padding: 10px;
+    position: relative;
+    z-index: 2;
+}
+
+aside.aside .show-content-tag-name .body-content-show-tag-name::-webkit-scrollbar {
+    width: 10px;
+}
+
+
+aside.aside .show-content-tag-name .body-content-show-tag-name:hover::-webkit-scrollbar-thumb {
+    background: #18191B;
+    border-radius: 20px;
+}
+
+aside.aside .show-content-tag-name .body-content-show-tag-name .response-data {
+    min-height: 200px;
+    max-height: 100%;
+    position: inherit;
+}
+
+aside.aside .show-content-tag-name .body-content-show-tag-name .response-data::after {
+    content: "";
+    background-color: transparent;
+    display: block;
+    border-radius: 50%;
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    top: calc(50% - 25px) ;
+    left: calc(50% - 25px) ;
+    border: solid 4px #18191B;
+    border-left-color: rgb(50, 117, 255);
+    animation: spainers .5s cubic-bezier(.42,0,.58,1) infinite;
+}
+
+@keyframes spainers {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+aside.aside .show-content-tag-name .hide-content-tag-name {
+    border-bottom-right-radius: 69px;
+    border-top-right-radius: 69px;
+    padding: 29px 5px 29px 5px;
+    position: absolute;
+    top: 50%;
+    right: -10%;
+    transform: translate(-40%, -50%);
+    background-color: #252627;
+    cursor: pointer;
+}
+
+aside.aside .show-content-tag-name .hide-content-tag-name svg {
+    width: 14px;
+    transition: .1s ease-in-out;
+}
+
+aside.aside .show-content-tag-name .hide-content-tag-name:hover svg {
+    transform: scale(.7);
+}
+
+
+
+
+
+
+
+/* styles for aside and childern*/
+
+
+
+
+/* styles for app-content and childern*/
+div.app-content {
+    flex-grow: 12;
+    flex-direction: column;
+    display: flex;
+}
+
+/* styles hreader */
+
+header.app-header {
+    flex-grow: .2;
+}
+
+header.app-header .header-content {
+    padding: 20px;
+    border-bottom: 2px solid #dfdfdf;
+    min-height: 100%;
+}
+
+
+/* styles main */
+main.main {
+    flex-grow: 20;
+}
+
+main.main .contant-main {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+main.main .contant-main .notification {
+    height: 450px;
+    width: 400px;
+    background-color: #fff;
+    cursor: col-resize;
+}
+
+/* styles footer */
+
+footer.app-footer {
+    flex-grow: .2;
+}
+
+footer.app-footer .footer-content {
+    padding: 20px;
+    text-align: center;
+    border-top: 2px solid #dfdfdf;
+}
+
+/* styles for app-content and childern*/
