@@ -8,13 +8,13 @@ import { addClass } from "./helpers/Css/attClass/add.att.js";
 import { hasClass } from "./helpers/Css/attClass/has.att.js";
 import { removeClass } from "./helpers/Css/attClass/remove.att.js";
 import { clickElement, clickElements } from "./helpers/Events/click.e.js";
-import { fetchDataString_1 } from "./helpers/apis/get/fetch.string.js";
+import { fetchDataString } from "./helpers/apis/get/fetch.string.js";
 
 
 /**
  * create varaibles globals
  */
-const URL_APP = "http://127.0.0.1:8000/cavas/apis/"
+const URL_APP = "http://127.0.0.1:8000/canvas/apis/"
 const app = document.getElementById("app");
 
 const btnsAside = [...document.getElementsByClassName("btn-aside")];
@@ -52,7 +52,7 @@ const changeContentTagName = (btn) => {
 
 
 
-function addClassBtn(event) {
+async function addClassBtn(event) {
 
     if (hasClass({ element: this, nameClass: "active" }))
         return;
@@ -68,7 +68,10 @@ function addClassBtn(event) {
 
     changeContentTagName(this)
 
-    fetchDataString_1({ url: URL_APP , element: inputSreach, amination: responseContentData })
+   const res = await  fetchDataString({ url: URL_APP + "get/" + inputSreach.name + "/" + inputSreach.value, element: inputSreach, el: responseContentData , nameClass:"loading" })
+
+   console.log(res)
+
 
 }
 

@@ -213,7 +213,7 @@ aside.aside .show-content-tag-name .body-content-show-tag-name .response-data {
     position: inherit;
 }
 
-aside.aside .show-content-tag-name .body-content-show-tag-name .response-data::after {
+aside.aside .show-content-tag-name .body-content-show-tag-name .response-data.loading::after {
     content: "";
     background-color: transparent;
     display: block;
