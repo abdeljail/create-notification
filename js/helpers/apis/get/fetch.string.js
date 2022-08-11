@@ -1,7 +1,6 @@
 
 import { addClass } from "../../Css/attClass/add.att.js";
 import { removeClass } from "../../Css/attClass/remove.att.js";
-import { string } from "../../inputs/inputs.text.js";
 
 
 /**
@@ -16,16 +15,22 @@ const fetchDataString = async ({ url, el = undefined, nameClass = undefined }) =
 
   try {
 
-    addClass({ el, nameClass });
+    const check = el instanceof Element && typeof nameClass === "string";
 
-    console.log(string(url));
+    console.log(check);
 
-    return
+
+    if (check)
+      addClass({ el, nameClass });
+
     return await fetch(url)
       .then((response) => response.json())
       .then((data) => { return data; })
       .catch((error) => { console.log(error) })
-      .finally(() => { removeClass({ el, nameClass }); })
+      .finally(() => {
+        if (check)
+          removeClass({ el, nameClass });
+      })
   } catch (err) {
     throw err;
   };

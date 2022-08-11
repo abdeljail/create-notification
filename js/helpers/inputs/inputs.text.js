@@ -14,10 +14,9 @@ const string = (value) => {
         return false
 
     value = value.trim()
-    
-    const regexp = RegExp('(^[A-Za-z]{3,16}))', 'g');
 
-    if (regexp.exec(value) === null)
+
+    if (value.includes("<") || value.includes("</"))
         return false
 
     return true

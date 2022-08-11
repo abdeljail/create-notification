@@ -9,7 +9,7 @@ import { hasClass } from "./helpers/Css/attClass/has.att.js";
 import { removeClass } from "./helpers/Css/attClass/remove.att.js";
 import { clickElement, clickElements } from "./helpers/Events/click.e.js";
 import { fetchDataString } from "./helpers/apis/get/fetch.string.js";
-
+import { string } from "./helpers/inputs/inputs.text.js";
 
 /**
  * create varaibles globals
@@ -61,6 +61,7 @@ async function addClassBtn(event) {
         addClass({ el: showContentTagName, nameClass: "active" })
 
     let classBtn = document.querySelector(".btn-aside.active");
+
     if (classBtn)
         removeClass({ el: classBtn, nameClass: "active" })
 
@@ -68,9 +69,9 @@ async function addClassBtn(event) {
 
     changeContentTagName(this)
 
-   const res = await  fetchDataString({ url: URL_APP + "get/" + inputSreach.name + "/" + inputSreach.value, element: inputSreach, el: responseContentData , nameClass:"loading" })
+    const res = await fetchDataString({ url: URL_APP + "get/" + inputSreach.name + "/" + inputSreach.value, element: inputSreach, el: responseContentData, nameClass: "loading" })
 
-   console.log(res)
+    console.log(res)
 
 
 }
@@ -83,8 +84,8 @@ const hideContentAside = (event) => {
 }
 
 
-
-
+// if (!string(inputSreach.value))
+//         return alert("Invalid value input for type string");
 
 
 

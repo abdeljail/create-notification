@@ -85,6 +85,7 @@ aside.aside .aside-content .links-tag-names>div button:hover {
     background-color: #252627;
     transition: background-color .2s ease-in-out;
 }
+
 aside.aside .aside-content .links-tag-names>div button.active,
 aside.aside .aside-content .links-tag-names>div button.active:hover {
     border-radius: 0;
@@ -213,19 +214,23 @@ aside.aside .show-content-tag-name .body-content-show-tag-name .response-data {
     position: inherit;
 }
 
+aside.aside .show-content-tag-name .body-content-show-tag-name .response-data.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 aside.aside .show-content-tag-name .body-content-show-tag-name .response-data.loading::after {
     content: "";
     background-color: transparent;
     display: block;
     border-radius: 50%;
     position: absolute;
-    width: 50px;
-    height: 50px;
-    top: calc(50% - 25px) ;
-    left: calc(50% - 25px) ;
-    border: solid 4px #18191B;
+    width: 24px;
+    height: 24px;
+    border: solid 6px #18191B;
     border-left-color: rgb(50, 117, 255);
-    animation: spainers .5s cubic-bezier(.42,0,.58,1) infinite;
+    animation: spainers .5s cubic-bezier(.42, 0, .58, 1) infinite;
 }
 
 @keyframes spainers {
