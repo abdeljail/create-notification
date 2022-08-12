@@ -17,9 +17,6 @@ const fetchDataString = async ({ url, el = undefined, nameClass = undefined }) =
 
     const check = el instanceof Element && typeof nameClass === "string";
 
-    console.log(check);
-
-
     if (check)
       addClass({ el, nameClass });
 

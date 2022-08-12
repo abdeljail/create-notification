@@ -15,6 +15,7 @@ import { string } from "./helpers/inputs/inputs.text.js";
  * create varaibles globals
  */
 const URL_APP = "http://127.0.0.1:8000/canvas/apis/"
+
 const app = document.getElementById("app");
 
 const btnsAside = [...document.getElementsByClassName("btn-aside")];
@@ -30,6 +31,11 @@ const headerShowContentTagName = document.getElementById("haeder-content-show-ta
 const contentHeader = headerShowContentTagName.querySelector("h3");
 
 const inputSreach = headerShowContentTagName.querySelector("input");
+
+const createElement = responseContentData.firstElementChild.firstElementChild.firstElementChild;
+
+let templete = [];
+// let templete = [];
 
 
 
@@ -47,9 +53,29 @@ const changeContentTagName = (btn) => {
 
     contentHeader.textContent = btn.dataset.nameTag;
     inputSreach.name = btn.name;
+    createElement.innerHTML = `create now ${btn.name}`;
+    createElement.dataset.name = btn.name;
 
 };
 
+function createElementDOM(event) {
+    console.log(event);
+}
+
+const DOMelements = (array) => {
+
+    return array.map((element) => {
+
+        let div = document.createElement('div');
+
+        div.innerHTML = `<div class="${element} tages" id="${element}" tabindex="1" role="button" aria-label="${element}">${element}</div>`
+
+        clickElement({ element: div, fun: createElementDOM })
+
+        return div
+    })
+
+}
 
 
 async function addClassBtn(event) {
@@ -68,10 +94,18 @@ async function addClassBtn(event) {
     addClass({ el: this, nameClass: "active" })
 
     changeContentTagName(this)
+    responseContentData.lastElementChild.innerHTML = ""
+    const { data: { resault }, success } = await fetchDataString({ url: URL_APP + "get/" + inputSreach.name, element: inputSreach, el: responseContentData, nameClass: "loading" })
 
-    const res = await fetchDataString({ url: URL_APP + "get/" + inputSreach.name + "/" + inputSreach.value, element: inputSreach, el: responseContentData, nameClass: "loading" })
+    if (!success)
+        return alert("Error getting data from server you are trying to access");
 
-    console.log(res)
+    if (!resault.length) {
+        return console.log("resault is empty");
+    }
+
+    
+    responseContentData.lastElementChild.append(...DOMelements(resault));
 
 
 }
@@ -98,3 +132,5 @@ const hideContentAside = (event) => {
 clickElements({ elements: btnsAside, fun: addClassBtn });
 
 clickElement({ element: hideContentTagName, fun: hideContentAside })
+
+clickElement({ element: createElement, fun: createElementDOM })
