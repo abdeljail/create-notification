@@ -389,11 +389,10 @@ main.main .contant-main {
     height: 100%;
 }
 
-main.main .contant-main .notification {
+main.main .contant-main .canvas {
     height: 450px;
     width: 400px;
     background-color: #fff;
-    cursor: col-resize;
 }
 
 /* styles footer */
