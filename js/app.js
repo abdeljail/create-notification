@@ -11,6 +11,7 @@ import { clickElement, clickElements } from "./helpers/Events/click.event.js";
 import { focusElement } from "./helpers/Events/focus.event.js";
 import { fetchDataString } from "./helpers/apis/get/fetch.string.js";
 import { string } from "./helpers/inputs/inputs.text.js";
+import { switchContentHeader, emptyContentHeader } from "./notification/functions/switchContentHeader.fun.js"
 
 /**
  * create varaibles globals
@@ -38,6 +39,10 @@ const searchBtn = headerShowContentTagName.querySelector("#search-btn");
 const closeBtn = headerShowContentTagName.querySelector("#close-btn");
 
 const createElement = responseContentData.firstElementChild.firstElementChild.firstElementChild;
+
+const canvas = document.getElementById("canvas");
+
+const contantMain = document.getElementById("contant-main");
 
 let templete = [];
 // let templete = [];
@@ -127,7 +132,7 @@ async function serchContent(event) {
 
     addClass({ el: responseContentData, nameClass: "loading" })
 
-    const { data: { resault }, success } = await fetchDataString({ url: URL_APP + "get/serach" + "/" + inputSreach.name + "/" + inputSreach.value , el: responseContentData, nameClass: "loading" })
+    const { data: { resault }, success } = await fetchDataString({ url: URL_APP + "get/serach" + "/" + inputSreach.name + "/" + inputSreach.value, el: responseContentData, nameClass: "loading" })
 
     if (!success)
         return alert("Error getting data from server you are trying to access");
@@ -142,48 +147,12 @@ async function serchContent(event) {
 
 function emptyInputSearch(event) {
 
-    // if (hasClass({ element: this, nameClass: "active" }))
-    //     return;
-
-    // if (!hasClass({ element: showContentTagName, nameClass: "active" }))
-    //     addClass({ el: showContentTagName, nameClass: "active" })
-
-    // let classBtn = document.querySelector(".btn-aside.active");
-
-    // if (classBtn)
-    //     removeClass({ el: classBtn, nameClass: "active" })
-
-    // addClass({ el: this, nameClass: "active" })
-
-    // changeContentTagName(this)
-    // responseContentData.lastElementChild.innerHTML = ""
-    // const { data: { resault }, success } = await fetchDataString({ url: URL_APP + "get/" + inputSreach.name, element: inputSreach, el: responseContentData, nameClass: "loading" })
-
-    // if (!success)
-    //     return alert("Error getting data from server you are trying to access");
-
-    // if (!resault.length) {
-    //     return console.log("resault is empty");
-    // }
-
-    // responseContentData.lastElementChild.append(...DOMelements(resault));
-
-
     if (inputSreach.value === "")
         return;
 
-
     inputSreach.value = ""
 
-
-
 }
-
-
-
-
-
-
 
 
 const hideContentAside = (event) => {
@@ -196,9 +165,6 @@ const hideContentAside = (event) => {
 
 // if (!string(inputSreach.value))
 //         return alert("Invalid value input for type string");
-
-
-
 
 
 /**
@@ -215,4 +181,6 @@ clickElement({ element: searchBtn, fun: serchContent });
 
 clickElement({ element: closeBtn, fun: emptyInputSearch });
 
+clickElement({ element: canvas, fun: switchContentHeader })
 
+clickElement({ element: contantMain, fun: emptyContentHeader })
