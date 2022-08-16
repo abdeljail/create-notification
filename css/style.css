@@ -14,7 +14,7 @@ body,
 }
 
 button,
-input,
+input
 select,
 textarea,
 [role="button"],
@@ -393,6 +393,13 @@ main.main .contant-main .canvas {
     height: 450px;
     width: 400px;
     background-color: #fff;
+    padding: 10px;
+    border:2px solid #EBECF0;
+}
+
+
+main.main .contant-main .canvas.focus{
+    outline: 2px solid rgb(50, 117, 255);
 }
 
 /* styles footer */
@@ -408,3 +415,52 @@ footer.app-footer .footer-content {
 }
 
 /* styles for app-content and childern*/
+
+
+
+/* start  settings styles for childern app header  */
+
+.settings-colors label {
+    position: relative;
+    width: 30px;
+    height: 30px;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color:  rgb(50, 117, 255);
+    border: 1px solid #ddd;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.settings-colors label input{
+    position: absolute;
+    width: 0px;
+    height: 0px;
+    bottom: -25px;
+    left: 0;
+    z-index: -1;
+}
+
+.settings-colors label::after{
+    content: attr(data-colors);
+    position: absolute;
+    bottom: -28px;
+    left: 0;
+    background-color: #18191B;
+    font-size:12px ;
+    padding: 6px 12px;
+    border-radius: 4px;
+    width: max-content;
+    color: #fff;
+    transition:.3s transform ease-in-out;
+    transform: translateX(30px);
+    z-index: -1;
+}
+.settings-colors label:hover::after{
+    transform: translateX(0px);
+    z-index: 1;
+
+}
+/* end settings styles for childern app header  */
