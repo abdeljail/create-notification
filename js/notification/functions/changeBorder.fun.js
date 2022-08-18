@@ -37,10 +37,27 @@ const changeBorderElement = (elements, canvasElement) => {
 
 
 
+/**
+ * change border radius of the element when keyup input 
+ */
+function keyupChangeBorder(input, canvasElement) {
+
+    if (input.value >= parseInt(input.max))
+        input.value = parseInt(input.max);
+
+    if (input.value <= parseInt(input.min))
+        input.value = parseInt(input.min);
+
+    canvasElement.style.borderWidth = input.value + "px";
+}
+
+
+
 
 export {
     borderElement,
     changeBorderElement,
+    keyupChangeBorder
 }
 
 
