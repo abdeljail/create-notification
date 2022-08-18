@@ -10,15 +10,13 @@ import { removeClass } from "../../helpers/Css/attClass/remove.att.js";
 
 let showElement;
 
-
-
 const changeBorderColorElement = (element, elementCanvas) => element.addEventListener("input", () => {
     elementCanvas.style.borderColor = element.value
     element.parentElement.style.backgroundColor = element.value
 })
 
 /**
- * change border radius element for click the buttons increase and decrease
+ * change border width element for click the buttons increase and decrease
  */
 const borderElement = (element, show) => {
     showElement = show;
@@ -30,7 +28,7 @@ let value;
 // let check;
 
 /**
- * change border radius element for click the buttons increase and decrease
+ * change border width element for click the buttons increase and decrease
  */
 const changeBorderElement = (elements, canvasElement) => {
 
@@ -38,12 +36,14 @@ const changeBorderElement = (elements, canvasElement) => {
 
     clickElements({ elements: elements, fun: changeBorderRadius })
 
+    console.log(canvas)
+
 }
 
 /**
- * change border radius of the element when keyup input 
+ * change border width of the element when keyup input 
  */
-function keyupChangeBorder(input, canvasElement) {
+const keyupChangeBorder = (input, canvasElement) => {
 
     if (input.value >= parseInt(input.max))
         input.value = parseInt(input.max);
@@ -54,17 +54,23 @@ function keyupChangeBorder(input, canvasElement) {
     canvasElement.style.borderWidth = input.value + "px";
 }
 
-export {
-    borderElement,
-    changeBorderElement,
-    keyupChangeBorder,
-    changeBorderColorElement
+
+
+/**
+ * change border radius of the element when keyup input 
+ */
+const changeBorderStyleElement = (elements, canvasElement) => {
+
+    canvas = canvasElement
+
+    clickElements({ elements: elements, fun: changeBorderStyle })
+
 }
 
 /**
  * show div setting border for click button 
  */
- function showElementBorder() {
+function showElementBorder() {
     if (hasClass({ element: showElement, nameClass: "active" }))
         return;
     addClass({ el: showElement, nameClass: "active" });
@@ -93,4 +99,26 @@ function changeBorderRadius() {
     this.parentElement.children[1].value = value;
     canvas.style.borderWidth = value + "px";
 
+}
+
+/**
+ * check type style border  for change type 
+ * and update target element border style
+ */
+function changeBorderStyle() {
+
+    console.log(this.name);
+
+    canvas.style.borderStyle = this.name;
+
+
+}
+
+
+export {
+    borderElement,
+    changeBorderElement,
+    keyupChangeBorder,
+    changeBorderColorElement,
+    changeBorderStyleElement
 }
