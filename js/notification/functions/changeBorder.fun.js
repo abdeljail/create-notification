@@ -8,13 +8,18 @@ import { hasClass } from "../../helpers/Css/attClass/has.att.js";
 import { addClass } from "../../helpers/Css/attClass/add.att.js";
 import { removeClass } from "../../helpers/Css/attClass/remove.att.js";
 
-
 let showElement;
+
+
+
+const changeBorderColorElement = (element, elementCanvas) => element.addEventListener("input", () => {
+    elementCanvas.style.borderColor = element.value
+    element.parentElement.style.backgroundColor = element.value
+})
 
 /**
  * change border radius element for click the buttons increase and decrease
  */
-
 const borderElement = (element, show) => {
     showElement = show;
     focusElement({ element: element, fun: showElementBorder })
@@ -35,8 +40,6 @@ const changeBorderElement = (elements, canvasElement) => {
 
 }
 
-
-
 /**
  * change border radius of the element when keyup input 
  */
@@ -51,40 +54,12 @@ function keyupChangeBorder(input, canvasElement) {
     canvasElement.style.borderWidth = input.value + "px";
 }
 
-
-
-
 export {
     borderElement,
     changeBorderElement,
-    keyupChangeBorder
+    keyupChangeBorder,
+    changeBorderColorElement
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// const changeBackgroundElement = (element, elementCanvas) => element.addEventListener("input", () => {
-//     elementCanvas.style.backgroundColor = element.value
-//     element.parentElement.style.backgroundColor = element.value
-// })
-
-
-
 
 /**
  * show div setting border for click button 
@@ -100,9 +75,6 @@ export {
  * and update target element border width
  */
 function changeBorderRadius() {
-
-
-    console.log(this);
 
     value = parseInt(this.parentElement.children[1].value);
 
