@@ -24,10 +24,23 @@ const horizontalShadow = (element, canvasElement) => {
     })
 
 }
+/**
+ * change Vertical box Shadow for change value input range
+ *  */
+const verticalShadow = (element, canvasElement) => {
 
+    canvas = canvasElement;
 
+    element.addEventListener('input', () => {
+        element.nextElementSibling.value = element.value;
+        shadow[1] = element.value + "px";
+        canvasElement.style.boxShadow = "  " + shadow[0] + " " + shadow[1] + " " + shadow[2] + " " + shadow[3] + " " + shadow[4] + " "
+    })
+
+}
 
 
 export {
     horizontalShadow,
+    verticalShadow,
 }
