@@ -70,6 +70,7 @@ const colorShadow = (element, canvasElement) => {
 
     element.addEventListener('input', () => {
         shadow[4] = element.value;
+        element.parentElement.style.backgroundColor = element.value
         canvasElement.style.boxShadow = "  " + shadow[0] + " " + shadow[1] + " " + shadow[2] + " " + shadow[3] + " " + shadow[4] + " "
     })
 
