@@ -73,6 +73,12 @@ const changeBorderStyleElement = (elements, canvasElement) => {
 function showElementBorder() {
     if (hasClass({ element: showElement, nameClass: "active" }))
         return;
+        
+    let focus = document.querySelector(".active")
+
+    if (focus instanceof Element)
+        removeClass({ el: focus, nameClass: "active" });
+
     addClass({ el: showElement, nameClass: "active" });
 }
 
