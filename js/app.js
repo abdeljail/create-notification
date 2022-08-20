@@ -10,6 +10,7 @@ import { removeClass } from "./helpers/Css/attClass/remove.att.js";
 import { clickElement, clickElements } from "./helpers/Events/click.e.js";
 import { fetchDataString } from "./helpers/apis/get/fetch.string.js";
 import { string } from "./helpers/inputs/inputs.text.js";
+import { createElementTag } from "./helpers/classes/ceateElement.tag.js";
 
 /**
  * create varaibles globals
@@ -66,17 +67,16 @@ const DOMelements = (array) => {
 
     return array.map((element) => {
 
-        let div = document.createElement('div');
+        const createTag = new createElementTag('div');
 
-        div.innerHTML = `<div class="${element} tages" id="${element}" tabindex="1" role="button" aria-label="${element}">${element}</div>`
+        createTag.innerHTML(`<div class="${element} tages" id="${element}" tabindex="1" role="button" aria-label="${element}">${element}</div>`)
 
-        clickElement({ element: div, fun: createElementDOM })
+        clickElement({ element: createTag.element, fun: createElementDOM })
 
-        return div
+        return createTag.element;
     })
 
 }
-
 
 async function addClassBtn(event) {
 
@@ -100,13 +100,10 @@ async function addClassBtn(event) {
     if (!success)
         return alert("Error getting data from server you are trying to access");
 
-    if (!resault.length) {
+    if (!resault.length)
         return console.log("resault is empty");
-    }
 
-    
     responseContentData.lastElementChild.append(...DOMelements(resault));
-
 
 }
 
@@ -134,3 +131,5 @@ clickElements({ elements: btnsAside, fun: addClassBtn });
 clickElement({ element: hideContentTagName, fun: hideContentAside })
 
 clickElement({ element: createElement, fun: createElementDOM })
+
+responseContentData.lastElementChild.append(...DOMelements([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18]));
