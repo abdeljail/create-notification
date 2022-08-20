@@ -20,8 +20,8 @@ textarea,
 [role="button"],
 [type="button"] {
     border: 0;
-    outline: 0;
     background: none;
+
 }
 
 button,
@@ -29,6 +29,15 @@ select,
 [role="button"],
 [type="button"] {
     cursor: pointer;
+}
+
+button:focus,
+select:focus,
+input:focus,
+textarea:focus,
+[role="button"],
+[type="button"] {
+    outline: none;
 }
 
 header,
@@ -56,7 +65,7 @@ aside.aside {
 }
 
 aside.aside .aside-content {
-    border-right: 2px solid #dfdfdf;
+    border-right: 1px solid #dfdfdf;
     min-height: 100%;
     max-height: 100%;
 }
@@ -178,17 +187,45 @@ aside.aside .show-content-tag-name .haeder-content-show-tag-name>* {
 
 }
 
+aside.aside .show-content-tag-name .haeder-content-show-tag-name .search-content {
+    display: flex;
+    align-items: stretch;
+}
+
 aside.aside .show-content-tag-name .haeder-content-show-tag-name .search-content input {
-    padding: 12px 15px;
+    padding: 10px 15px;
     background-color: #fff;
-    border-radius: 8px;
-    border: 1px solid #18191B !important;
     width: 100%;
     color: #18191B !important;
     font-weight: 700;
     font-size: 1rem;
+    border-right: 1px solid #f0f2f4;
+    border-left: 1px solid #f0f2f4;
 }
 
+aside.aside .show-content-tag-name .haeder-content-show-tag-name .search-content>button {
+    padding: 12px 12px;
+    background-color: #fff;
+}
+
+aside.aside .show-content-tag-name .haeder-content-show-tag-name .search-content .search-btn {
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+
+aside.aside .show-content-tag-name .haeder-content-show-tag-name .search-content .close-btn {
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+
+}
+
+aside.aside .show-content-tag-name .haeder-content-show-tag-name .search-content>button svg {
+    width: 16px;
+}
+
+aside.aside .show-content-tag-name .haeder-content-show-tag-name .search-content>button svg path {
+    fill: #000;
+}
 
 aside.aside .show-content-tag-name .body-content-show-tag-name {
     overflow: auto;
@@ -212,29 +249,31 @@ aside.aside .show-content-tag-name .body-content-show-tag-name .response-data {
     min-height: 200px;
     max-height: 100%;
     position: inherit;
-   
+
 }
 
-aside.aside .show-content-tag-name .body-content-show-tag-name .response-data .create-element  {
-    padding: 10px 0px 10px 10px; 
+aside.aside .show-content-tag-name .body-content-show-tag-name .response-data .create-element {
+    padding: 10px 0px 10px 10px;
 }
-aside.aside .show-content-tag-name .body-content-show-tag-name .response-data .create-element button  {
+
+aside.aside .show-content-tag-name .body-content-show-tag-name .response-data .create-element button {
     padding: 10px 4px;
-    border-radius:  6px ;
+    border-radius: 6px;
     background-color: rgb(50, 117, 255);
-    border: 2px solid  rgb(88, 151, 245);
+    border: 2px solid rgb(88, 151, 245);
     color: #fff;
-    font-size:17px;
+    font-size: 17px;
     font-weight: bold;
     text-transform: capitalize;
     width: 100%;
-    transition:transform .2s ease-in-out;
-}
-aside.aside .show-content-tag-name .body-content-show-tag-name .response-data .create-element button:active{
-    transform: scale(.97 , .97);
+    transition: transform .2s ease-in-out;
 }
 
-aside.aside .show-content-tag-name .body-content-show-tag-name .response-data .response{
+aside.aside .show-content-tag-name .body-content-show-tag-name .response-data .create-element button:active {
+    transform: scale(.97, .97);
+}
+
+aside.aside .show-content-tag-name .body-content-show-tag-name .response-data .response {
     flex-wrap: wrap;
     display: grid;
     grid-auto-rows: auto;
@@ -242,7 +281,8 @@ aside.aside .show-content-tag-name .body-content-show-tag-name .response-data .r
     grid-gap: 10px;
     padding: 10px;
 }
-aside.aside .show-content-tag-name .body-content-show-tag-name .response-data .response >div {
+
+aside.aside .show-content-tag-name .body-content-show-tag-name .response-data .response>div {
     border-radius: 10px;
     background-color: #18191B;
     border: 1px solid #000000;
@@ -250,7 +290,7 @@ aside.aside .show-content-tag-name .body-content-show-tag-name .response-data .r
 
 }
 
-aside.aside .show-content-tag-name .body-content-show-tag-name .response-data .response >div>div {
+aside.aside .show-content-tag-name .body-content-show-tag-name .response-data .response>div>div {
     width: 100%;
     height: 100%;
     justify-content: center;
@@ -265,9 +305,10 @@ aside.aside .show-content-tag-name .body-content-show-tag-name .response-data.lo
     align-items: center;
 }
 
-aside.aside .show-content-tag-name .body-content-show-tag-name .response-data.loading >div:first-child{
+aside.aside .show-content-tag-name .body-content-show-tag-name .response-data.loading>div:first-child {
     display: none;
 }
+
 aside.aside .show-content-tag-name .body-content-show-tag-name .response-data.loading::after {
     content: "";
     background-color: transparent;
@@ -332,14 +373,17 @@ div.app-content {
 }
 
 /* styles hreader */
+header {
+    flex-basis: 50px;
+}
 
 header.app-header {
     flex-grow: .2;
 }
 
 header.app-header .header-content {
-    padding: 20px;
-    border-bottom: 2px solid #dfdfdf;
+    padding: 10px 20px;
+    border-bottom: 1px solid #dfdfdf;
     min-height: 100%;
 }
 
@@ -354,14 +398,22 @@ main.main .contant-main {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
     height: 100%;
 }
 
-main.main .contant-main .notification {
+main.main .contant-main .canvas {
     height: 450px;
     width: 400px;
     background-color: #fff;
-    cursor: col-resize;
+    padding: 10px;
+    border: 2px solid #EBECF0;
+    overflow: hidden;
+}
+
+
+main.main .contant-main .canvas.focus {
+    outline: 2px solid rgb(50, 117, 255);
 }
 
 /* styles footer */
@@ -373,7 +425,573 @@ footer.app-footer {
 footer.app-footer .footer-content {
     padding: 20px;
     text-align: center;
-    border-top: 2px solid #dfdfdf;
+    border-top: 1px solid #dfdfdf;
 }
 
 /* styles for app-content and childern*/
+
+
+
+/* start  settings styles for childern app header  */
+
+.app-header .header-content {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+.app-header .header-content>* {
+    padding: 0 10px;
+}
+
+.settings-background-colors {
+
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+.settings-background-colors label {
+    position: relative;
+    width: 30px;
+    height: 30px;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: rgb(50, 117, 255);
+    border: 1px solid #ddd;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.settings-background-colors label input {
+    position: absolute;
+    width: 0px;
+    height: 0px;
+    bottom: 0px;
+    left: 0;
+    z-index: -1;
+}
+
+.settings-background-colors label::after {
+    content: attr(data-colors);
+    position: absolute;
+    bottom: -28px;
+    left: 0;
+    background-color: #18191B;
+    font-size: 12px;
+    padding: 6px 12px;
+    border-radius: 4px;
+    width: max-content;
+    color: #fff;
+    transition: .1s transform ease-in-out;
+    transform: translateX(10px);
+    z-index: -1;
+    text-transform: capitalize;
+}
+
+.settings-background-colors label:hover::after {
+    transform: translateX(0px);
+    z-index: 1;
+}
+
+
+.settings-border-radius .border-radius {
+    display: flex;
+    align-items: stretch;
+}
+
+.settings-border-radius .border-radius>* {
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.settings-border-radius .border-radius>button {
+    border: 1px solid #2b3b4a4d;
+    width: 40px;
+    transition: .2s background-color ease-in-out;
+    position: relative;
+}
+
+.settings-border-radius .border-radius>button:hover {
+    background-color: #2b3b4a4d;
+}
+
+.settings-border-radius .border-radius>button::after {
+    content: attr(data-name);
+    position: absolute;
+    bottom: -28px;
+    left: 0;
+    background-color: #18191B;
+    font-size: 12px;
+    padding: 6px 12px;
+    border-radius: 4px;
+    width: max-content;
+    color: #fff;
+    transition: .1s transform ease-in-out;
+    transform: translateX(10px);
+    z-index: -1;
+    text-transform: capitalize;
+}
+
+.settings-border-radius .border-radius>button:hover::after {
+    transform: translateX(0px);
+    z-index: 1;
+}
+
+.settings-border-radius .border-radius>input {
+    border-top: 1px solid #2b3b4a4d;
+    border-bottom: 1px solid #2b3b4a4d;
+    display: inline-block;
+    width: 50px;
+    text-align: center;
+}
+
+.settings-border-radius .border-radius>input::-webkit-inner-spin-button,
+.settings-border-radius .border-radius>input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+}
+
+.settings-border-radius .border-radius>button:first-of-type {
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+
+.settings-border-radius .border-radius>button:last-of-type {
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+
+.settings-border-radius .border-radius>button>span {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.settings-border .btn-border {
+    border: 1px solid #2b3b4a4d;
+    min-width: 40px;
+    transition: .2s background-color ease-in-out;
+    border-radius: 4px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+}
+
+.settings-border .btn-border:hover {
+    background-color: #2b3b4a4d;
+}
+
+.settings-border .btn-border span {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.settings-border .btn-border span:first-of-type {
+    font-weight: bold;
+    padding-left: 10px;
+    padding-right: 5px;
+}
+
+.settings-border .btn-border span:last-of-type {
+    font-weight: bold;
+    padding-left: 5px;
+    padding-right: 10px;
+}
+
+.settings-border .btn-border svg {
+    width: 12px;
+}
+
+
+.settings-border {
+    position: relative;
+}
+
+.settings-border .show-border {
+    position: absolute;
+    left: 0;
+    top: 45px;
+    min-width: max-content;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity .2s ease-in;
+}
+
+.settings-border .show-border.active {
+    z-index: 12;
+    opacity: 1;
+    box-shadow: 1px 1px 16px 3px #dfdfd9;
+}
+
+.settings-border .show-border>div {
+    display: flex;
+    align-items: stretch;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #dfdfdf;
+    flex-wrap: wrap;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    border-radius: 6px;
+    width: 200px;
+}
+
+.settings-border .show-border>div>div {
+    width: inherit;
+}
+
+.settings-border .show-border h4 {
+    padding: 10px 0;
+    color: #18191B;
+    font-size: 15px;
+}
+
+.settings-border .show-border .select-color {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+}
+
+.settings-border .show-border .select-color label {
+    border-radius: 4px;
+    border: 1px solid #2b3b4a4d;
+    width: 90px;
+    height: 30px;
+    background-color: rgb(50, 117, 255);
+    position: relative;
+}
+
+.settings-border .show-border .select-color label input {
+    position: absolute;
+    width: 0px;
+    height: 0px;
+    bottom: 0px;
+    left: 0;
+    z-index: -1;
+}
+
+.settings-border .show-border .select-width {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+}
+
+.settings-border .show-border .select-width>button,
+.settings-border .show-border .select-width:last-child>input {
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.settings-border .show-border .select-width>button {
+
+    border: 1px solid #2b3b4a4d;
+    width: 40px;
+    transition: .2s background-color ease-in-out;
+    position: relative;
+}
+
+.settings-border .show-border .select-width>button:hover {
+    background-color: #2b3b4a4d;
+}
+
+.settings-border .show-border .select-width>input {
+    border-top: 1px solid #2b3b4a4d;
+    border-bottom: 1px solid #2b3b4a4d;
+    display: inline-block;
+    width: 50px;
+    text-align: center;
+}
+
+.settings-border .show-border .select-width>input::-webkit-inner-spin-button,
+.settings-border .show-border .select-width>input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+}
+
+
+.settings-border .show-border .select-width>button:first-of-type {
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+
+.settings-border .show-border .select-width>button:last-of-type {
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+
+.settings-border .show-border .select-width>button>span {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.settings-border .show-border .select-style {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+
+}
+
+.settings-border .show-border .select-style>div {
+    padding: 0 10px 10px;
+    width: 50%;
+}
+
+.settings-border .show-border .select-style>div>button {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    border-radius: 4px;
+    border: 1px solid #2b3b4a4d;
+    transition: .2s background-color ease-in-out;
+
+}
+
+.settings-border .show-border .select-style>div>button>span {
+    padding: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    font-size: 13px;
+}
+
+.settings-border .show-border .select-style>div>:hover {
+    background-color: #2b3b4a4d;
+}
+
+
+.settings-border {
+    position: relative;
+}
+
+.settings-border .btn-border {
+    border: 1px solid #2b3b4a4d;
+    min-width: 40px;
+    transition: .2s background-color ease-in-out;
+    border-radius: 4px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+}
+
+.settings-border .btn-border:hover {
+    background-color: #2b3b4a4d;
+}
+
+.settings-border .btn-border span {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.settings-border .btn-border span:first-of-type {
+    font-weight: bold;
+    padding-left: 10px;
+    padding-right: 5px;
+}
+
+.settings-border .btn-border span:last-of-type {
+    font-weight: bold;
+    padding-left: 5px;
+    padding-right: 10px;
+}
+
+.settings-border .btn-border svg {
+    width: 12px;
+}
+
+
+.settings-box-shadow {
+    position: relative;
+    background-color: #fff;
+}
+
+.settings-box-shadow .btn-box-shadow {
+    border: 1px solid #2b3b4a4d;
+    min-width: 40px;
+    transition: .2s background-color ease-in-out;
+    border-radius: 4px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+}
+
+.settings-box-shadow .btn-box-shadow>div {
+
+    display: flex;
+    align-items: stretch;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #dfdfdf;
+    flex-wrap: wrap;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    border-radius: 6px;
+    width: 200px;
+}
+
+.settings-box-shadow .btn-box-shadow:hover {
+    background-color: #2b3b4a4d;
+}
+
+.settings-box-shadow .btn-box-shadow span {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.settings-box-shadow .btn-box-shadow span:first-of-type {
+    font-weight: bold;
+    padding-left: 10px;
+    padding-right: 5px;
+}
+
+.settings-box-shadow .btn-box-shadow span:last-of-type {
+    font-weight: bold;
+    padding-left: 5px;
+    padding-right: 10px;
+}
+
+.settings-box-shadow .btn-box-shadow svg {
+    width: 12px;
+}
+
+.settings-box-shadow .show-box-shadow {
+    position: absolute;
+    left: 0;
+    top: 45px;
+    min-width: max-content;
+    z-index: -1;
+    opacity: 0;
+    background-color: #fff;
+    transition: opacity .2s ease-in;
+    border-radius: 6px;
+}
+
+.settings-box-shadow .show-box-shadow.active {
+    z-index: 12;
+    opacity: 1;
+    box-shadow: 1px 1px 16px 3px #dfdfd9;
+}
+
+.settings-box-shadow .show-box-shadow>div {
+    display: flex;
+    align-items: stretch;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #dfdfdf;
+    flex-wrap: wrap;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    border-radius: 6px;
+    width: 200px;
+}
+
+.settings-box-shadow .show-box-shadow h4:first-of-type {
+    padding-bottom: 10px;
+}
+
+.settings-box-shadow .show-box-shadow h4 {
+    color: #18191B;
+    font-size: 15px;
+}
+
+.settings-box-shadow .show-box-shadow .select>div {
+    padding: 10px 0;
+}
+
+.settings-box-shadow .show-box-shadow .select-color {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+}
+
+.settings-box-shadow .show-box-shadow .select-color label {
+    border-radius: 4px;
+    border: 1px solid #2b3b4a4d;
+    width: 90px;
+    height: 30px;
+    background-color: rgb(50, 117, 255);
+    position: relative;
+}
+
+.settings-box-shadow .show-box-shadow .select-color label input {
+    position: absolute;
+    width: 0px;
+    height: 0px;
+    bottom: 0px;
+    left: 0;
+    z-index: -1;
+}
+
+.settings-box-shadow .show-box-shadow .select-shadow {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+}
+
+.settings-box-shadow .show-box-shadow .select-shadow>div {
+    width: inherit;
+    display: flex;
+    padding-top: 6px;
+    align-items: center;
+}
+
+.settings-box-shadow .show-box-shadow .select-shadow>div input:first-of-type {
+    width: 80%;
+    -webkit-appearance: none;
+    background: #18191B;
+    height: 4px;
+    margin-right: 10px;
+}
+
+.settings-box-shadow .show-box-shadow .select-shadow>div input:first-of-type::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 10px;
+    width: 30px;
+    border-radius: 15px;
+    background: rgb(50, 117, 255);
+    cursor: ew-resize;
+    transition: background-color .3s ease-in-out;
+}
+
+.settings-box-shadow .show-box-shadow .select-shadow>div input:first-of-type::-webkit-slider-runnable-track {
+    -webkit-appearance: none;
+    box-shadow: none;
+    border: none;
+    background: transparent;
+}
+
+.settings-box-shadow .show-box-shadow .select-shadow>div input:first-of-type:hover::-webkit-slider-thumb {
+    background-color: #18191B;
+}
+
+.settings-box-shadow .show-box-shadow .select-shadow>div input:last-of-type {
+    width: 20%;
+    text-align: center;
+    border: 1px solid #18191B;
+    border-radius: 4px;
+}
+
+.settings-box-shadow .show-box-shadow .select-shadow>div input:last-of-type::-webkit-inner-spin-button,
+.settings-box-shadow .show-box-shadow .select-shadow>div input:last-of-type::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+
+/*  */
+
+
+/* end settings styles for childern app header  */
