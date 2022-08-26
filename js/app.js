@@ -5,15 +5,15 @@
  * imports files from folder helpers 
  */
 import { addClass } from "./helpers/Css/attClass/add.att.js";
-import { hasClass } from "./helpers/Css/attClass/has.att.js";
+import { hasClass, hasClasses } from "./helpers/Css/attClass/has.att.js";
 import { removeClass } from "./helpers/Css/attClass/remove.att.js";
 import { clickElement, clickElements } from "./helpers/Events/click.event.js";
 import { focusElement } from "./helpers/Events/focus.event.js";
 import { fetchDataString } from "./helpers/apis/get/fetch.string.js";
 import { string } from "./helpers/inputs/inputs.text.js";
 import { createElementTag } from "./helpers/classes/ceateElement.tag.js";
-
 import { switchContentHeader, emptyContentHeader } from "./notification/functions/switchContentHeader.fun.js"
+import { dragDropElement } from "./notification/functions/dragDrop.fun.js";
 
 
 /**
@@ -73,9 +73,12 @@ const changeContentTagName = (btn) => {
 
 function createElementDOM(event) {
 
-    console.log(event);
+
 
 }
+
+
+
 
 const DOMelements = (array) => {
 
@@ -85,7 +88,11 @@ const DOMelements = (array) => {
 
         createTag.innerHTML(`<div class="${element} tages" id="${element}" tabindex="1" role="button" aria-label="${element}">${element}</div>`)
 
-        clickElement({ element: createTag.element, fun: createElementDOM })
+        createTag.createAttribute("draggable")
+
+        createTag.setAttribute("draggable", "true")
+
+        dragDropElement(createTag.element, canvas)
 
         return createTag.element;
     })
