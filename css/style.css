@@ -6,6 +6,7 @@
     box-sizing: border-box;
     font-family: 'Hind', sans-serif;
     font-family: 'Roboto', sans-serif;
+    user-select: none;
 }
 
 body,
@@ -409,6 +410,7 @@ main.main .contant-main .canvas {
     padding: 10px;
     border: 2px solid #EBECF0;
     overflow: hidden;
+    position: relative;
 }
 
 
@@ -990,6 +992,16 @@ footer.app-footer .footer-content {
     -webkit-appearance: none;
 }
 
+#canvas .tages {
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: red;
+
+
+}
 
 /*  */
 
